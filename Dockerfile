@@ -13,7 +13,7 @@ RUN mvn dependency:go-offline
 COPY src ./src
 
 # Compilar sin tests
-RUN mvn clean package -DskipTests
+RUN mvn clean package
 
 # --------- STAGE 2: RUN ---------
 FROM eclipse-temurin:17-jdk-alpine

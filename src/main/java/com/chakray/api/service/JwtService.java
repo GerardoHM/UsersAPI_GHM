@@ -2,6 +2,8 @@ package com.chakray.api.service;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
+import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -13,9 +15,12 @@ import java.security.Key;
 
 @Service
 public class JwtService {
+    private final String secret;
 
-    @Value("${jwt.secret}")
-    private String secret;
+    // Constructor donde Spring inyectará el valor de jwt.secret desde la configuración
+    public JwtService(@Value("${jwt.secret}") String secret) {
+        this.secret = secret;
+    }
 
     private Key getSigningKey() {
         return Keys.hmacShaKeyFor(secret.getBytes());

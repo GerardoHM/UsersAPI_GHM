@@ -171,13 +171,17 @@ public class UserService {
             return null;
         }
 
-        // 🎟️ 5. Generar token
         return jwtService.generateToken(user.getTaxId());
     }
 
     private String nowMadagascar() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
         return ZonedDateTime.now(ZoneId.of("Indian/Antananarivo")).format(formatter);
+    }
+
+    public boolean getTaxIdExistence(String taxId){
+        return users.stream()
+                .anyMatch(u -> taxId.equals(u.getTaxId()));
     }
 
     public String generateToken(String taxId) {
