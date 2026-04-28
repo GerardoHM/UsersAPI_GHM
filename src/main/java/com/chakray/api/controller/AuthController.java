@@ -1,19 +1,13 @@
 package com.chakray.api.controller;
 
-import com.chakray.api.model.User;
 import com.chakray.api.service.UserService;
-import com.chakray.api.util.AESUtil;
 import io.swagger.v3.oas.annotations.Operation;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 @RestController
 public class AuthController {
